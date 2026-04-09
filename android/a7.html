@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A7 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn">A1</a><a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a><a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn">A5</a><a href="a6.html" class="pnav-btn">A6</a>
+    <a href="a7.html" class="pnav-btn active">A7</a><a href="a8.html" class="pnav-btn">A8</a>
+    <a href="a9.html" class="pnav-btn">A9</a><a href="a10.html" class="pnav-btn">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box and-q">
+      <h2>Practical 7: SQLite Database</h2>
+      <div class="q-label">Question</div>
+      <div class="q-text">7.To display lists using ListView, drop-down using Spinner, and suggestions using
+        AutoCompleteTextView</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (activity_main.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"&gt;
+
+    &lt;!-- Spinner Label --&gt;
+    &lt;TextView
+        android:id="@+id/txtSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select City (Spinner)"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/&gt;
+
+    &lt;!-- Spinner --&gt;
+    &lt;Spinner
+        android:id="@+id/spinnerCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/&gt;
+
+    &lt;!-- AutoComplete Label --&gt;
+    &lt;TextView
+        android:id="@+id/txtAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Country (AutoComplete)"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/spinnerCity"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"/&gt;
+
+    &lt;!-- AutoCompleteTextView --&gt;
+    &lt;AutoCompleteTextView
+        android:id="@+id/autoCountry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Type country name"
+        android:completionThreshold="1"
+        app:layout_constraintTop_toBottomOf="@id/txtAuto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/&gt;
+
+    &lt;!-- ListView Label --&gt;
+    &lt;TextView
+        android:id="@+id/txtList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobile Brands (ListView)"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/autoCountry"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"/&gt;
+
+    &lt;!-- ListView --&gt;
+    &lt;ListView
+        android:id="@+id/listViewBrands"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txtList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"/&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>package com.example.practical7;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Spinner spinnerCity;
+    AutoCompleteTextView autoCountry;
+    ListView listViewBrands;
+
+    String cities[] = {"Mumbai","Delhi","Pune","Bangalore","Chennai"};
+
+    String countries[] = {"India","USA","Canada","Australia","Germany","France","Japan"};
+
+    String brands[] = {"Samsung","Apple","OnePlus","Xiaomi","Oppo","Vivo","Realme"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        spinnerCity = findViewById(R.id.spinnerCity);
+        autoCountry = findViewById(R.id.autoCountry);
+        listViewBrands = findViewById(R.id.listViewBrands);
+
+        // Spinner Adapter
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                cities);
+
+        spinnerCity.setAdapter(spinnerAdapter);
+
+        // AutoComplete Adapter
+        ArrayAdapter<String> autoAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                countries);
+
+        autoCountry.setAdapter(autoAdapter);
+
+        // ListView Adapter
+        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                brands);
+
+        listViewBrands.setAdapter(listAdapter);
+
+        listViewBrands.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String brand = brands[position];
+                Toast.makeText(MainActivity.this, "You Selected "+brand, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="resources-box">
+      <h3>📦 Download Resources</h3>
+      <a href="resources/prac7.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac7.1.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac7.2.png" download class="dl-btn">Download Output Image</a>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

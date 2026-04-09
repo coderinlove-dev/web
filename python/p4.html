@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P4 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a><a href="p4.html" class="pnav-btn active">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a><a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a><a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 4: String Concepts</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">4.To study string concepts, escape characters, string formatting, raw strings, Unicode
+        strings, and built-in string methods.</div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+# String Concepts & Escape Characters
+str1 = "Hello\nWorld"  # \n for newline
+str2 = "Python\tProgramming"  # \t for tab
+str3 = "He said \"Hi!\""  # \" for quotes
+
+print("Escape Characters:")
+print(str1)
+print(str2)
+print(str3)
+
+# String Formatting
+name = "DARPAN"
+age = 20
+print("\nString Formatting:")
+print("My name is {} and I am {} years old.".format(name, age))
+print(f"My name is {name} and I am {age} years old.")  # f-string
+
+# Raw Strings
+raw_str = r"C:\Users\DARPAN\Documents"
+print("\nRaw String:", raw_str)
+
+# Unicode Strings
+unicode_str = "Unicode example: \u2764 \u263A"
+print("\nUnicode String:", unicode_str)
+
+# Built-in String Methods
+sample = "python programming"
+print("\nBuilt-in String Methods:")
+print("Uppercase:", sample.upper())
+print("Lowercase:", sample.lower())
+print("Title Case:", sample.title())
+print("Count 'p':", sample.count('p'))
+print("Starts with 'py':", sample.startswith("py"))
+print("Ends with 'ing':", sample.endswith("ing"))
+print("Find 'gram':", sample.find("gram"))
+print("Replace 'python' with 'Java':", sample.replace("python", "Java"))
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

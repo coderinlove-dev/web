@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A1 — CoderIn ♥</title>
+  <meta name="description" content="Android Practical 1: Hello World App" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body and-pnav">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn active">A1</a>
+    <a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a>
+    <a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn">A5</a>
+    <a href="a6.html" class="pnav-btn">A6</a>
+    <a href="a7.html" class="pnav-btn">A7</a>
+    <a href="a8.html" class="pnav-btn">A8</a>
+    <a href="a9.html" class="pnav-btn">A9</a>
+    <a href="a10.html" class="pnav-btn">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <div class="prac-container">
+
+    <div class="question-box and-q">
+      <h2>Practical 1: Setup Android Studio</h2>
+      <div class="q-label">Question</div>
+      <div class="q-text">1.To study Android architecture and set up the Android development environment using Android
+        Studio.</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java / XML</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        
+B) Setting Up Android Development Environment (Android Studio)
+
+Steps to set up Android Studio:
+
+1.Download and Install
+Go to Android Studio official site
+ and download the installer.
+Run the installer and follow the on-screen instructions.
+Select Standard installation for beginners.
+
+2.Launch Android Studio
+Open Android Studio after installation.
+First-time setup: it will download SDK, tools, and emulator images.
+
+3.Configure SDK
+Go to File → Settings → Appearance & Behavior → System Settings → Android SDK
+Install the latest SDK Platform and SDK Tools.
+
+4.Set Up an Emulator
+Go to Tools → AVD Manager → Create Virtual Device
+Select a device (e.g., Pixel 5) and system image (e.g., Android 13).
+Launch emulator to test apps.
+
+5.Create First Android Project
+Click New Project → Empty Activity → Next
+Give project name, package name, and choose language (Java/Kotlin).
+Click Finish to generate project structure.
+
+6.Run the App
+Connect a real Android device via USB (enable developer mode) or use the emulator.
+Click Run → Run App (green play button). App will launch.
+</code></pre>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

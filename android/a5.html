@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A5 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn">A1</a><a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a><a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn active">A5</a><a href="a6.html" class="pnav-btn">A6</a>
+    <a href="a7.html" class="pnav-btn">A7</a><a href="a8.html" class="pnav-btn">A8</a>
+    <a href="a9.html" class="pnav-btn">A9</a><a href="a10.html" class="pnav-btn">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+
+    <div class="instr-box">
+      <div class="instr-header">
+        <span class="instr-icon">📋</span>
+        <span class="instr-title">Instructions</span>
+        <button class="instr-toggle" onclick="toggleInstr(this)" title="Expand">▼</button>
+      </div>
+
+      <ul class="instr-list collapsed" id="instrList">
+        <li>Right-click <strong>res</strong> → <strong>New → Android Resource Directory</strong>.</li>
+        <li>Set <strong>Name:</strong> menu.</li>
+        <li>Set <strong>Resource type:</strong> menu.</li>
+        <li>Right-click <strong>menu</strong> → <strong>New → Menu Resource File</strong>.</li>
+        <li>Set <strong>Name:</strong> main_menu.xml.</li>
+        <li>Add menu items inside <strong>main_menu.xml</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="question-box and-q">
+      <h2>Practical 5: Action Bar &amp; App Icon</h2>
+      <div class="q-label">Question</div>
+      <div class="q-text">5.To add action items to the Action Bar and customize the application icon</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (activity_main.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:text="Action Bar Example"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="405dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="3dp"
+        android:background="#B1AFA5"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (menu.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+
+    &lt;item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        app:showAsAction="ifRoom" /&gt;
+
+    &lt;item
+        android:id="@+id/action_about"
+        android:title="About"
+        android:icon="@android:drawable/ic_menu_info_details"
+        app:showAsAction="ifRoom" /&gt;
+
+    &lt;item
+        android:id="@+id/action_exit"
+        android:title="Exit"
+        app:showAsAction="never" /&gt;
+
+&lt;/menu&gt;
+</code></pre>
+    </div>
+
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>package com.example.practical5;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class MainActivity extends AppCompatActivity {
+
+    Toolbar toolbar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Initialize toolbar after layout is set
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    // Create Action Bar Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    // Handle Menu Clicks
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if (id == R.id.action_about) {
+            Toast.makeText(this, "About Selected", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if (id == R.id.action_exit) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="resources-box">
+      <h3>📦 Download Resources</h3>
+      <a href="resources/pract5.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/pract5.1.png" download class="dl-btn">Download Output Image</a>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A10 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn">A1</a><a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a><a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn">A5</a><a href="a6.html" class="pnav-btn">A6</a>
+    <a href="a7.html" class="pnav-btn">A7</a><a href="a8.html" class="pnav-btn">A8</a>
+    <a href="a9.html" class="pnav-btn">A9</a><a href="a10.html" class="pnav-btn active">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="instr-box">
+      <div class="instr-header">
+        <span class="instr-icon">📋</span>
+        <span class="instr-title">Instructions</span>
+        <button class="instr-toggle" onclick="toggleInstr(this)" title="Expand">▼</button>
+      </div>
+
+      <ul class="instr-list collapsed" id="instrList">
+        <li>Right-click on your <strong>package name</strong> (e.g., <strong>com.example.sqliteapp</strong>).</li>
+        <li>Click <strong>New → Java Class</strong>.</li>
+        <li>Enter the class name: <strong>DBHelper</strong>.</li>
+      </ul>
+    </div>
+    <div class="question-box and-q">
+      <h2>Practical 10: SQL lite Database</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">10.To create an SQLite database and perform basic operations like Insert, Update, Delete, and
+        Query.</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (activity_main.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"&gt;
+
+    &lt;EditText
+        android:id="@+id/etId"
+        android:layout_width="183dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="85dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etName"
+        android:layout_width="187dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="86dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/etId" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etMarks"
+        android:layout_width="131dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="94dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/etName" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnInsert"
+        android:layout_width="112dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="42dp"
+        android:text="Insert"
+        app:layout_constraintBottom_toTopOf="@+id/btnView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="114dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="10dp"
+        android:text="Update"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintStart_toEndOf="@+id/btnInsert"
+        app:layout_constraintTop_toBottomOf="@+id/etMarks" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnDelete"
+        android:layout_width="119dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="18dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+        app:layout_constraintTop_toBottomOf="@+id/etMarks" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnView"
+        android:layout_width="260dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="63dp"
+        android:text="View Data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsert" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="110dp"
+        android:text="Student Data Entry"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="32dp"
+        android:text="Roll No :"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/etId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="8dp"
+        android:text="Name :"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/etName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="1dp"
+        android:text="Percentage : "
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/etMarks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" /&gt;
+
+    &lt;EditText
+        android:id="@+id/editTextText"
+        android:layout_width="296dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="45dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnView" /&gt;
+
+    &lt;EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="385dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText" /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        package com.example.practical10;
+
+import android.database.Cursor;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etId, etName, etMarks,e1,e2;
+    Button btnInsert, btnUpdate, btnDelete, btnView;
+    DBHelper db;
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etId = findViewById(R.id.etId);
+        etName = findViewById(R.id.etName);
+        etMarks = findViewById(R.id.etMarks);
+        e1 = findViewById(R.id.editTextText);
+        e2 = findViewById(R.id.editTextText2);
+        btnInsert = findViewById(R.id.btnInsert);
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnDelete = findViewById(R.id.btnDelete);
+        btnView = findViewById(R.id.btnView);
+
+        db = new DBHelper(this);
+
+        btnInsert.setOnClickListener(v -> {
+
+            boolean result = db.insertData(
+                    Integer.parseInt(etId.getText().toString()),
+                    etName.getText().toString(),
+                    Integer.parseInt(etMarks.getText().toString())
+            );
+
+            Toast.makeText(this, result ? "Inserted" : "Failed", Toast.LENGTH_SHORT).show();
+        });
+
+        btnUpdate.setOnClickListener(v -> {
+
+            boolean result = db.updateData(
+                    Integer.parseInt(etId.getText().toString()),
+                    etName.getText().toString(),
+                    Integer.parseInt(etMarks.getText().toString())
+            );
+
+            Toast.makeText(this, result ? "Updated" : "Failed", Toast.LENGTH_SHORT).show();
+        });
+
+        btnDelete.setOnClickListener(v -> {
+
+            boolean result = db.deleteData(
+                    Integer.parseInt(etId.getText().toString())
+            );
+
+            Toast.makeText(this, result ? "Deleted" : "Failed", Toast.LENGTH_SHORT).show();
+        });
+
+        btnView.setOnClickListener(v -> {
+
+            Cursor cursor = db.getAllData();
+
+            StringBuilder data = new StringBuilder();
+
+            while (cursor.moveToNext()) {
+                data.append("ID: ").append(cursor.getInt(0)).append("\n");
+                data.append("Name: ").append(cursor.getString(1)).append("\n");
+                data.append("Marks: ").append(cursor.getInt(2)).append("\n\n");
+            }
+
+            Toast.makeText(this, data.toString(), Toast.LENGTH_LONG).show();
+            e1.setText("Hello "+etName.getText().toString());
+            e2.setText("You Got " + etMarks.getText().toString() + " Percentage");
+        });
+    }
+}
+</code></pre>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">DBHelperJava</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        package com.example.practical10;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBHelper extends SQLiteOpenHelper {
+
+    public DBHelper(Context context) {
+        super(context, "StudentDB", null, 1);
+    }
+
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE students(id INTEGER PRIMARY KEY, name TEXT, marks INTEGER)");
+    }
+
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS students");
+        onCreate(db);
+    }
+
+    public boolean insertData(int id, String name, int marks) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("id", id);
+        cv.put("name", name);
+        cv.put("marks", marks);
+
+        long result = db.insert("students", null, cv);
+
+        return result != -1;
+    }
+
+    public boolean updateData(int id, String name, int marks) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("name", name);
+        cv.put("marks", marks);
+
+        int result = db.update("students", cv, "id=?", new String[]{String.valueOf(id)});
+
+        return result > 0;
+    }
+
+    public boolean deleteData(int id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int result = db.delete("students", "id=?", new String[]{String.valueOf(id)});
+
+        return result > 0;
+    }
+
+    public Cursor getAllData() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        return db.rawQuery("SELECT * FROM students", null);
+    }
+}
+</code></pre>
+    </div>
+    <div class="resources-box">
+      <h3>📦 Download Resources</h3>
+      <a href="resources/prac10.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac10.1.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac10.2.png" download class="dl-btn">Download Output Image</a>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

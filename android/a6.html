@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A6 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn">A1</a><a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a><a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn">A5</a><a href="a6.html" class="pnav-btn active">A6</a>
+    <a href="a7.html" class="pnav-btn">A7</a><a href="a8.html" class="pnav-btn">A8</a>
+    <a href="a9.html" class="pnav-btn">A9</a><a href="a10.html" class="pnav-btn">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box and-q">
+      <h2>Practical 6: Creating </h2>
+      <div class="q-label"> Question</div>
+      <div class="q-text">6.To create a form using basic views and use DatePicker and TimePicker to select date and
+        time.</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (activity_main.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Registration Form"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/&gt;
+
+        &lt;EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Name"
+            android:layout_marginBottom="15dp"/&gt;
+
+        &lt;EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="20dp"/&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"/&gt;
+
+        &lt;DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"/&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"/&gt;
+
+        &lt;TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_marginBottom="20dp"/&gt;
+
+        &lt;Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"/&gt;
+
+        &lt;TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"/&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;
+</code></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>package com.example.practical6;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText etName, etEmail;
+    DatePicker datePicker;
+    TimePicker timePicker;
+    Button btnSubmit;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        datePicker = findViewById(R.id.datePicker);
+        timePicker = findViewById(R.id.timePicker);
+        btnSubmit = findViewById(R.id.btnSubmit);
+        tvResult = findViewById(R.id.tvResult);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String name = etName.getText().toString();
+                String email = etEmail.getText().toString();
+
+                int day = datePicker.getDayOfMonth();
+                int month = datePicker.getMonth() + 1;
+                int year = datePicker.getYear();
+
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
+
+                String result = "Name: " + name +
+                        "\nEmail: " + email +
+                        "\nDate: " + day + "/" + month + "/" + year +
+                        "\nTime: " + hour + ":" + minute;
+
+                tvResult.setText(result);
+            }
+        });
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="resources-box">
+      <h3>📦 Download Resources</h3>
+      <a href="resources/prac6.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac6.1.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac6.2.png" download class="dl-btn">Download Output Image</a>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

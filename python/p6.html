@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P6 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a><a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn active">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a><a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a><a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 6: Functional Programming Tools</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">6.To implement functional programming tools (filter, map, reduce), lists as stacks and queues,
+        and list comprehensions</div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+from functools import reduce
+
+# Functional Programming Tools
+numbers = [1, 2, 3, 4, 5, 6]
+
+# Filter: even numbers
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print("Even Numbers (filter):", even_numbers)
+
+# Map: square of numbers
+squared_numbers = list(map(lambda x: x ** 2, numbers))
+print("Squared Numbers (map):", squared_numbers)
+
+# Reduce: product of numbers
+product = reduce(lambda x, y: x * y, numbers)
+print("Product of Numbers (reduce):", product)
+
+# Lists as Stack (LIFO)
+stack = []
+stack.append(10)
+stack.append(20)
+stack.append(30)
+print("\nStack after pushes:", stack)
+stack.pop()
+print("Stack after pop:", stack)
+
+# Lists as Queue (FIFO)
+queue = []
+queue.append(1)
+queue.append(2)
+queue.append(3)
+print("\nQueue after enqueues:", queue)
+queue.pop(0)
+print("Queue after dequeue:", queue)
+
+# List Comprehensions
+squares = [x ** 2 for x in range(1, 6)]
+print("\nSquares using list comprehension:", squares)
+
+even_sq = [x ** 2 for x in range(1, 11) if x % 2 == 0]
+print("Squares of even numbers using list comprehension:", even_sq)
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

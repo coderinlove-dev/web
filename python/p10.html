@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P10 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a><a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a><a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a><a href="p10.html" class="pnav-btn active">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 10: Class And Subclass</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">10.To create a class and subclass, demonstrate data hiding, class variables, method
+        overriding, and basic exception handling.</div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+# Base Class
+class Employee:
+    company = "TechCorp"  # Class Variable
+    
+    def __init__(self, name, salary):
+        self.name = name       # Public
+        self.__salary = salary # Private (data hiding)
+    
+    def display(self):
+        print(f"Employee Name: {self.name}, Salary: {self.__salary}, Company: {Employee.company}")
+    
+    # Method to update salary
+    def update_salary(self, amount):
+        if amount < 0:
+            raise ValueError("Salary increment cannot be negative")
+        self.__salary += amount
+
+# Subclass
+class Manager(Employee):
+    def __init__(self, name, salary, department):
+        super().__init__(name, salary)
+        self.department = department
+    
+    # Method Overriding
+    def display(self):
+        print(f"Manager Name: {self.name}, Department: {self.department}, Company: {Employee.company}")
+
+# Creating Objects
+e1 = Employee("Anup", 50000)
+m1 = Manager("Soham", 80000, "IT")
+
+e1.display()
+m1.display()
+
+# Exception Handling while updating salary
+try:
+    e1.update_salary(-5000)
+except ValueError as ve:
+    print("Exception:", ve)
+
+# Valid salary update
+e1.update_salary(10000)
+e1.display()
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

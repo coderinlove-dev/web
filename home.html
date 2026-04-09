@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoderIn ♥ — Home</title>
+  <meta name="description" content="Browse Python and Android practical exams. Click any card to view the answer and code." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="home-body">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">CoderIn<span class="heart">♥</span></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#python-section" class="nav-btn">🐍 Python</a>
+      <a href="#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()" title="Toggle theme">☀️</button>
+    </div>
+  </nav>
+
+  <!-- HERO / SEARCH -->
+  <section class="home-hero">
+    <h1>Your <span>Practical</span> Helper 📚</h1>
+    <p>10 Python practicals · 10 Android practicals — all in one place</p>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        id="searchInput"
+        class="search-bar"
+        placeholder="Search practicals..."
+        oninput="filterPracticals()"
+      />
+    </div>
+  </section>
+
+  <!-- ===== PYTHON SECTION ===== -->
+  <div class="section-wrap" id="python-section">
+    <div class="section-header">
+      <span class="section-icon">🐍</span>
+      <h2 class="section-title">Python Practicals</h2>
+      <span class="section-badge py-badge">10 Practicals</span>
+    </div>
+    <div class="cards-grid">
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 1</div>
+        <div class="card-title">Introduction to Python</div>
+        <div class="card-desc">Basic Python syntax, variables, and data types. Placeholder description.</div>
+        <a href="python/p1.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 2</div>
+        <div class="card-title">Control Flow</div>
+        <div class="card-desc">if/else, loops, and conditionals. Placeholder description.</div>
+        <a href="python/p2.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 3</div>
+        <div class="card-title">Functions & Modules</div>
+        <div class="card-desc">Defining functions, parameters, and importing modules. Placeholder description.</div>
+        <a href="python/p3.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 4</div>
+        <div class="card-title">Lists & Tuples</div>
+        <div class="card-desc">Working with Python sequences. Placeholder description.</div>
+        <a href="python/p4.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 5</div>
+        <div class="card-title">Dictionaries & Sets</div>
+        <div class="card-desc">Key-value pairs and set operations. Placeholder description.</div>
+        <a href="python/p5.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 6</div>
+        <div class="card-title">File Handling</div>
+        <div class="card-desc">Reading and writing files in Python. Placeholder description.</div>
+        <a href="python/p6.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 7</div>
+        <div class="card-title">Object Oriented Programming</div>
+        <div class="card-desc">Classes, objects, and inheritance. Placeholder description.</div>
+        <a href="python/p7.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 8</div>
+        <div class="card-title">Exception Handling</div>
+        <div class="card-desc">try/except, raise, and custom exceptions. Placeholder description.</div>
+        <a href="python/p8.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 9</div>
+        <div class="card-title">Regular Expressions</div>
+        <div class="card-desc">Pattern matching with the re module. Placeholder description.</div>
+        <a href="python/p9.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card py-card">
+        <div class="card-num">Practical 10</div>
+        <div class="card-title">Libraries & Applications</div>
+        <div class="card-desc">Using popular Python libraries. Placeholder description.</div>
+        <a href="python/p10.html" class="view-btn">View Answer</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== ANDROID SECTION ===== -->
+  <div class="section-wrap" id="android-section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <h2 class="section-title">Android Programming Practicals</h2>
+      <span class="section-badge and-badge">10 Practicals</span>
+    </div>
+    <div class="cards-grid">
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 1</div>
+        <div class="card-title">Hello World App</div>
+        <div class="card-desc">Create your first Android application. Placeholder description.</div>
+        <a href="android/a1.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 2</div>
+        <div class="card-title">UI Layouts</div>
+        <div class="card-desc">LinearLayout, RelativeLayout, and ConstraintLayout. Placeholder description.</div>
+        <a href="android/a2.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 3</div>
+        <div class="card-title">Button & Events</div>
+        <div class="card-desc">Handling button clicks and UI events. Placeholder description.</div>
+        <a href="android/a3.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 4</div>
+        <div class="card-title">Intent & Navigation</div>
+        <div class="card-desc">Moving between activities using Intents. Placeholder description.</div>
+        <a href="android/a4.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 5</div>
+        <div class="card-title">ListView & RecyclerView</div>
+        <div class="card-desc">Displaying lists of data efficiently. Placeholder description.</div>
+        <a href="android/a5.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 6</div>
+        <div class="card-title">SharedPreferences</div>
+        <div class="card-desc">Storing simple key-value data locally. Placeholder description.</div>
+        <a href="android/a6.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 7</div>
+        <div class="card-title">SQLite Database</div>
+        <div class="card-desc">Local database CRUD operations. Placeholder description.</div>
+        <a href="android/a7.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 8</div>
+        <div class="card-title">Fragments</div>
+        <div class="card-desc">Using fragments for modular UI design. Placeholder description.</div>
+        <a href="android/a8.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 9</div>
+        <div class="card-title">Notifications</div>
+        <div class="card-desc">Creating and displaying Android notifications. Placeholder description.</div>
+        <a href="android/a9.html" class="view-btn">View Answer</a>
+      </div>
+
+      <div class="prac-card and-card">
+        <div class="card-num">Practical 10</div>
+        <div class="card-title">API & Networking</div>
+        <div class="card-desc">Making HTTP requests in Android. Placeholder description.</div>
+        <a href="android/a10.html" class="view-btn">View Answer</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

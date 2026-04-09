@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P8 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a><a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a><a href="p8.html" class="pnav-btn active">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a><a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 8: Object Oriented Programming</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">8.To study object-oriented programming concepts in Python including classes, objects, data
+        hiding, constructors, class variables, method overloading, operator overloading, inheritance, and method
+        overriding.</div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+# Class and Constructor
+class Person:
+    # Class Variable
+    species = "Janavar "
+    
+    def __init__(self, name, age):
+        self.name = name  # Public
+        self.__age = age  # Private (data hiding)
+    
+    # Method
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.__age}, Species: {Person.species}")
+    
+    # Method Overloading (simulated using default args)
+    def greet(self, msg="Hello"):
+        print(f"{msg}, {self.name}!")
+
+    # Operator Overloading
+    def __add__(self, other):
+        return self.__age + other.__age
+
+# Creating Objects
+p1 = Person("Omkar", 22)
+p2 = Person("Rahul", 21)
+
+p1.display()
+p2.display()
+
+p1.greet()
+p2.greet("Good Morning")
+
+# Accessing Private Variable (will cause error if uncommented)
+# print(p1.__age)
+
+# Operator Overloading
+print("Sum of ages (operator +):", p1 + p2)
+
+# Inheritance
+class Student(Person):
+    def __init__(self, name, age, roll_no):
+        super().__init__(name, age)
+        self.roll_no = roll_no
+    
+    # Method Overriding
+    def display(self):
+        print(f"Student Name: {self.name}, Age: {self._Person__age}, Roll No: {self.roll_no}")
+
+s1 = Student("Samarth", 22, 101)
+s1.display()
+s1.greet("Hi")
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

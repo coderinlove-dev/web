@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A8 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn">A1</a><a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a><a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn">A5</a><a href="a6.html" class="pnav-btn">A6</a>
+    <a href="a7.html" class="pnav-btn">A7</a><a href="a8.html" class="pnav-btn active">A8</a>
+    <a href="a9.html" class="pnav-btn">A9</a><a href="a10.html" class="pnav-btn">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+
+    <div class="instr-box">
+      <div class="instr-header">
+        <span class="instr-icon">📋</span>
+        <span class="instr-title">Instructions</span>
+        <button class="instr-toggle" onclick="toggleInstr(this)" title="Expand">▼</button>
+      </div>
+
+      <ul class="instr-list collapsed" id="instrList">
+        <li>Right-click <strong>res</strong> → <strong>New → Android Resource Directory</strong>.</li>
+        <li>Set <strong>Name:</strong> menu.</li>
+        <li>Set <strong>Resource type:</strong> menu.</li>
+        <li>Right-click <strong>menu</strong> → <strong>New → Menu Resource File</strong>.</li>
+        <li>Set <strong>Name:</strong> option_menu.xml.</li>
+        <li>Add menu items inside <strong>option_menu.xml</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="question-box and-q">
+      <h2>Practical 8: To Display Images</h2>
+      <div class="q-label">Question</div>
+      <div class="q-text">8.To display images using ImageView, create an Options Menu, and Context Menu for views.</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (fragment_my.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="ImageView Example"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sample_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" /&gt;
+
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="381dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="3dp"
+        android:background="#E9E4B8"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (options_menu.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;item
+        android:id="@+id/menu_about"
+        android:title="About"/&gt;
+
+    &lt;item
+        android:id="@+id/menu_settings"
+        android:title="Settings"/&gt;
+
+    &lt;item
+        android:id="@+id/menu_exit"
+        android:title="Exit"/&gt;
+
+&lt;/menu&gt;
+</code></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>package com.example.practical8;
+
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView imageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Register Context Menu for ImageView
+        registerForContextMenu(imageView);
+    }
+
+    // Options Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.menu_about) {
+            Toast.makeText(this, "About Selected", Toast.LENGTH_SHORT).show();
+        }
+        else if (item.getItemId() == R.id.menu_settings) {
+            Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
+        }
+        else if (item.getItemId() == R.id.menu_exit) {
+            finish();
+        }
+
+        return true;
+    }
+
+    // Context Menu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        menu.setHeaderTitle("Image Options");
+
+        menu.add(0,1,0,"Share");
+        menu.add(0,2,0,"Delete");
+        menu.add(0,3,0,"View Details");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if(item.getItemId()==1)
+            Toast.makeText(this,"Share Selected",Toast.LENGTH_SHORT).show();
+
+        else if(item.getItemId()==2)
+            Toast.makeText(this,"Delete Selected",Toast.LENGTH_SHORT).show();
+
+        else if(item.getItemId()==3)
+            Toast.makeText(this,"View Details Selected",Toast.LENGTH_SHORT).show();
+
+        return true;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="resources-box">
+      <h3>📦 Download Resources</h3>
+      <a href="resources/prac8.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac8.1.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac8.2.png" download class="dl-btn">Download Output Image</a>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

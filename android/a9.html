@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Android A9 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn active">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav and-pnav">
+    <a href="a1.html" class="pnav-btn">A1</a><a href="a2.html" class="pnav-btn">A2</a>
+    <a href="a3.html" class="pnav-btn">A3</a><a href="a4.html" class="pnav-btn">A4</a>
+    <a href="a5.html" class="pnav-btn">A5</a><a href="a6.html" class="pnav-btn">A6</a>
+    <a href="a7.html" class="pnav-btn">A7</a><a href="a8.html" class="pnav-btn">A8</a>
+    <a href="a9.html" class="pnav-btn active">A9</a><a href="a10.html" class="pnav-btn">A10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box and-q">
+      <h2>Practical 9: To Display Images using ImageSwitcher, and GridView</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">9. To display images using ImageView, ImageSwitcher, and GridView, and implement Options Menu
+        and Context Menu.</div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">XML (activity_main.xml)</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+        &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"&gt;
+
+    &lt;ImageSwitcher
+        android:id="@+id/imageSwitcher"
+        android:layout_width="372dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;GridView
+        android:id="@+id/gridView"
+        android:layout_width="375dp"
+        android:layout_height="310dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageSwitcher" /&gt;
+
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="383dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="2dp"
+        android:background="#A3A3E2"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Java</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>package com.example.practical9;
+
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageSwitcher imageSwitcher;
+    GridView gridView;
+
+    int images[] = {
+            R.drawable.img1,
+            R.drawable.img2,
+            R.drawable.img3,
+            R.drawable.img4
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageSwitcher = findViewById(R.id.imageSwitcher);
+        gridView = findViewById(R.id.gridView);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        imageSwitcher.setFactory(() -> {
+            ImageView img = new ImageView(MainActivity.this);
+            img.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            return img;
+        });
+
+        gridView.setAdapter(new android.widget.BaseAdapter() {
+
+            public int getCount() { return images.length; }
+
+            public Object getItem(int position) { return images[position]; }
+
+            public long getItemId(int position) { return position; }
+
+            public View getView(int position, View convertView, android.view.ViewGroup parent) {
+
+                ImageView imageView = new ImageView(MainActivity.this);
+                imageView.setImageResource(images[position]);
+                imageView.setLayoutParams(new GridView.LayoutParams(200,200));
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                return imageView;
+            }
+        });
+
+        gridView.setOnItemClickListener((parent, view, position, id) ->
+                imageSwitcher.setImageResource(images[position])
+        );
+
+        registerForContextMenu(gridView);
+    }
+
+    // Options Menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        menu.add("Image 1");
+        menu.add("Image 2");
+        menu.add("Image 3");
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getTitle().equals("Image 1"))
+            imageSwitcher.setImageResource(images[0]);
+
+        if(item.getTitle().equals("Image 2"))
+            imageSwitcher.setImageResource(images[1]);
+
+        if(item.getTitle().equals("Image 3"))
+            imageSwitcher.setImageResource(images[2]);
+
+        return true;
+    }
+
+    // Context Menu
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+        menu.setHeaderTitle("Options");
+        menu.add("View");
+        menu.add("Share");
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+
+        Toast.makeText(this, item.getTitle()+" clicked", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+}
+</code></pre>
+    </div>
+    <div class="resources-box">
+      <h3>📦 Download Resources</h3>
+      <a href="resources/prac9.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac9.1.png" download class="dl-btn">Download Output Image</a>
+      <a href="resources/prac9.2.png" download class="dl-btn">Download Output Image</a>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

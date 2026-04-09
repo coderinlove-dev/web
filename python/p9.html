@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P9 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a><a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a><a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn active">P9</a><a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 9: Exception Handling</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">9.To study Python exception handling including assert statement, multiple except clauses,
+        try-finally, raising exceptions, and user-defined exceptions.
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+# Assert Statement
+num = 10
+assert num > 0, "Number must be positive"
+
+# Multiple Except Clauses
+try:
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+    result = a / b
+    print("Division Result:", result)
+except ZeroDivisionError:
+    print("Error: Division by zero")
+except ValueError:
+    print("Error: Invalid input")
+except Exception as e:
+    print("Error:", e)
+
+# Try-Finally
+try:
+    f = open("testfile.txt", "w")
+    f.write("Python Exception Handling")
+finally:
+    f.close()
+    print("File closed successfully")
+
+# Raising Exception
+def check_age(age):
+    if age < 18:
+        raise ValueError("Age must be 18 or above")
+    else:
+        print("Age is valid")
+
+try:
+    check_age(16)
+except ValueError as ve:
+    print("Raised Exception:", ve)
+
+# User-defined Exception
+class NegativeNumberError(Exception):
+    pass
+
+def square_root(n):
+    if n < 0:
+        raise NegativeNumberError("Cannot compute square root of negative number")
+    else:
+        print("Square root:", n ** 0.5)
+
+try:
+    square_root(-25)
+except NegativeNumberError as ne:
+    print("User-defined Exception:", ne)
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

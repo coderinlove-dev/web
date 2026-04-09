@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P2 — CoderIn ♥</title>
+  <meta name="description" content="Python Practical 2: Control Flow" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()" title="Toggle theme">☀️</button>
+    </div>
+  </nav>
+
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a>
+    <a href="p2.html" class="pnav-btn active">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a>
+    <a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a>
+    <a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a>
+    <a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a>
+    <a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 2: Control Statements & Loops</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">
+        2.To implement control statements, loops, membership operators, identity operators, and loop control statements.
+      </div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+# Control Statement (if-else)
+num = int(input("Enter a number: "))
+
+if num > 0:
+    print("Number is Positive")
+elif num == 0:
+    print("Number is Zero")
+else:
+    print("Number is Negative")
+
+# Loop (for loop)
+print("\nFor Loop:")
+for i in range(1, 6):
+    print(i, end=" ")
+
+# Loop (while loop)
+print("\n\nWhile Loop:")
+count = 1
+while count <= 5:
+    print(count, end=" ")
+    count += 1
+
+# Membership Operators
+list1 = [10, 20, 30, 40]
+print("\n\nMembership Operators:")
+print("20 in list1:", 20 in list1)
+print("50 not in list1:", 50 not in list1)
+
+# Identity Operators
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print("\nIdentity Operators:")
+print("a is b:", a is b)
+print("a is c:", a is c)
+print("a is not c:", a is not c)
+
+# Loop Control Statements
+print("\nLoop Control Statements (break & continue):")
+for i in range(1, 6):
+    if i == 3:
+        continue
+    if i == 5:
+        break
+    print(i, end=" ")
+</code></pre>
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

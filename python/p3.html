@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P3 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn active">P3</a><a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn">P7</a><a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a><a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 3: String Operations &amp; Random Functions</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">3.To implement string operations, random functions, command line arguments, and operator
+        precedence.</div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+import random
+import sys
+
+# String Operations
+str1 = input("Enter first string: ")
+str2 = input("Enter second string: ")
+
+print("Concatenation:", str1 + str2)
+print("Repetition:", str1 * 2)
+print("Length of str1:", len(str1))
+print("Uppercase str1:", str1.upper())
+print("Lowercase str2:", str2.lower())
+print("Is str1 alphabetic?", str1.isalpha())
+
+# Random Functions
+print("\nRandom Numbers:")
+print("Random float [0,1):", random.random())
+print("Random integer [1,10]:", random.randint(1, 10))
+print("Random choice from list:", random.choice([1, 2, 3, 4, 5]))
+
+# Command Line Arguments
+# Example: python program.py arg1 arg2
+print("\nCommand Line Arguments:")
+print("Total arguments:", len(sys.argv))
+print("Arguments List:", sys.argv)
+
+# Operator Precedence
+a = 10
+b = 5
+c = 2
+result = a + b * c / (b - c)
+print("\nOperator Precedence Result (a + b * c / (b - c)):", result)
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>

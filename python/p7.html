@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python P7 — CoderIn ♥</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body class="prac-body">
+  <nav class="navbar">
+    <div class="logo"><a href="../home.html">CoderIn<span class="heart">♥</span></a></div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home.html#python-section" class="nav-btn active">🐍 Python</a>
+      <a href="../home.html#android-section" class="nav-btn">🤖 Android</a>
+      <button class="icon-btn" id="darkToggle" onclick="toggleDark()">☀️</button>
+    </div>
+  </nav>
+  <div class="prac-nav py-pnav">
+    <a href="p1.html" class="pnav-btn">P1</a><a href="p2.html" class="pnav-btn">P2</a>
+    <a href="p3.html" class="pnav-btn">P3</a><a href="p4.html" class="pnav-btn">P4</a>
+    <a href="p5.html" class="pnav-btn">P5</a><a href="p6.html" class="pnav-btn">P6</a>
+    <a href="p7.html" class="pnav-btn active">P7</a><a href="p8.html" class="pnav-btn">P8</a>
+    <a href="p9.html" class="pnav-btn">P9</a><a href="p10.html" class="pnav-btn">P10</a>
+    <a href="../home.html" class="back-btn">← Back to Home</a>
+  </div>
+  <div class="prac-container">
+    <div class="question-box py-q">
+      <h2>Practical 7: Function Defination , calling</h2>
+      <div class="q-label">Task / Question</div>
+      <div class="q-text">7.To study function definition, calling functions, different types of arguments, scope of
+        variables, and documentation strings.</div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <span class="code-lang">Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      </div>
+      <pre><code>
+# Function Definition and Documentation String
+def greet(name, msg="Hello"):
+    """Function to greet a person with a message"""
+    print(f"{msg}, {name}!")
+
+# Calling Functions
+greet("Bhavani")
+greet("Arya", "Good Morning")
+
+# Different Types of Arguments
+def calculate(a, b=5, *args, **kwargs):
+    """Function to demonstrate different types of arguments"""
+    print("a:", a)
+    print("b:", b)
+    print("args:", args)
+    print("kwargs:", kwargs)
+    return a + b + sum(args) + sum(kwargs.values())
+
+result = calculate(10, 20, 1, 2, 3, x=5, y=10)
+print("Result of calculate:", result)
+
+# Scope of Variables
+global_var = 100
+
+def scope_demo():
+    local_var = 50
+    global global_var
+    global_var += 1
+    print("Inside function - Local:", local_var, "Global:", global_var)
+
+scope_demo()
+print("Outside function - Global:", global_var)
+
+# Accessing Documentation Strings
+print("\nFunction Documentation:")
+print(greet.__doc__)
+print(calculate.__doc__) 
+</code></pre>
+    </div>
+  </div>
+  <script src="../script.js"></script>
+</body>
+
+</html>
